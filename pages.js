@@ -1,4 +1,4 @@
-import { readdir, stat } from "node:fs/promises";
+import { readdir, stat, mkdir } from "node:fs/promises";
 
 let projects = [
   {
@@ -60,16 +60,21 @@ let projects = [
   }
 ]
 
-export async function generatePages(base = "./pages") {
-  let files = await readdir(base);
+export async function generatePages(input = "./pages", output = "./static") {
+  let files = await readdir(input);
+  if (!files.length) return;
+
   for (let path of files) {
-    let fullpath = base + "/" + path;
-    let isDirectory = (await stat(fullpath)).isDirectory();
+    let inputpath = input + "/" + path;
+    let outputpath = output + "/" + path;
+    let isDirectory = (await stat(inputpath)).isDirectory();
     if (isDirectory) {
-      generatePages(fullpath);
+      await mkdir(outputpath, { recursive: true });
+      generatePages(inputpath, output);
     } else {
-      let { render } = await import(fullpath);
-      console.log(render);
+      let { render } = await import(inputpath);
+      let result = await Bun.write(outputpath.slice(0, -3) + ".html", render());
+      console.log({ result })
     }
   }
 }

@@ -1,4 +1,5 @@
 export function render(project) {
+  return ``;
   return `
     <div class="flex space-x-12 px-16">
       <aside class="sticky top-0 h-full max-w-md w-full flex-shrink-0 py-16" transition:name="project-description">

@@ -1,0 +1,16 @@
+{
+  "name": ".",
+  "module": "index.js",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest",
+    "tailwindcss": "^3.3.3"
+  },
+  "scripts": {
+    "dev": "bun --watch index.js",
+    "run": "bun run index.js"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

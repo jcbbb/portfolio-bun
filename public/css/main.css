@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-display: swap;
+  src: url(/public/fonts/RobotoMono-VariableFont_wght.woff2) format("woff2-variations");
+  font-weight: 1 1000;
+}
+
+:root {
+  --gruvbox-black: #282828;
+  --gruvbox-green: #98971A;
+  --gruvbox-aqua: #689D6A;
+  --gruvbox-aqualight: #8EC07C;
+  --gruvbox-gray: #A89984;
+  --white: #ffffff;
+  --gruvbox-purple: #B16286;
+  --gruvbox-fg: #F9F5D7;
+  --gruvbox-fg-darker: #FBF1C7;
+
+  --bg: var(--black);
+
+  color-scheme: dark;
+
+  scroll-behavior: smooth;
+}
+
+#experience.active .title {
+  transition: 500ms;
+  color: var(--white);
+}
+
+body.experience-active {
+  transition: 500ms;
+  background-color: var(--gruvbox-aqua);
+}
+
+body.projects-active {
+  transition: 500ms;
+  background-color: var(--gruvbox-fg);
+}
+
+body.projects-active .title,
+body.projects-active .name,
+body.projects-active .subtitle,
+body.projects-active nav {
+  color: var(--gruvbox-black);
+}
+
+body.about-active .title,
+body.about-active .name,
+body.about-active .subtitle,
+body.about-active nav {
+  color: var(--white);
+}
+
+body.experience-active .title,
+body.experience-active .name,
+body.experience-active .subtitle,
+body.experience-active nav {
+  color: var(--white);
+}
+
+body.about-active {
+  transition: 500ms;
+  background-color: var(--gruvbox-black);
+}
+
+nav a.link-active svg {
+  @apply opacity-100 translate-x-0;
+}
+
+nav a.link-active span {
+  @apply translate-x-7;
+}

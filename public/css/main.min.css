@@ -651,6 +651,14 @@ video {
   isolation: auto;
 }
 
+.z-\[1\] {
+  z-index: 1;
+}
+
+.z-\[2\] {
+  z-index: 2;
+}
+
 .float-right {
   float: right;
 }
@@ -815,12 +823,25 @@ video {
   height: 100vh;
 }
 
+.min-h-full {
+  min-height: 100%;
+}
+
 .w-5 {
   width: 1.25rem;
 }
 
 .w-full {
   width: 100%;
+}
+
+.max-w-fit {
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 
 .max-w-lg {
@@ -885,6 +906,11 @@ video {
 
 .-translate-x-full {
   --tw-translate-x: -100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-2\/3 {
+  --tw-translate-x: 66.666667%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -2265,6 +2291,10 @@ video {
   opacity: 0;
 }
 
+.opacity-60 {
+  opacity: 0.6;
+}
+
 .bg-blend-normal {
   background-blend-mode: normal;
 }
@@ -2519,6 +2549,10 @@ video {
   transition-duration: 150ms;
 }
 
+.duration-1000 {
+  transition-duration: 1000ms;
+}
+
 .duration-200 {
   transition-duration: 200ms;
 }
@@ -2572,48 +2606,30 @@ video {
   --gruvbox-fg-darker: #FBF1C7;
   --bg: var(--black);
   color-scheme: dark;
-  scroll-behavior: smooth;
 }
 
-#experience.active .title {
-  transition: 500ms;
-  color: var(--white);
+body, html {
+  height: 100%;
+  min-height: 100%;
 }
 
-body.experience-active {
-  transition: 500ms;
+body:has(#experience:target) .wrapper {
   background-color: var(--gruvbox-aqua);
 }
 
-body.projects-active {
-  transition: 500ms;
+body:has(#experience:target) .title {
+  color: var(--white);
+}
+
+body:has(#projects:target) .wrapper {
   background-color: var(--gruvbox-fg);
 }
 
-body.projects-active .title,
-body.projects-active .name,
-body.projects-active .subtitle,
-body.projects-active nav {
+body:has(#projects:target) .title,
+body:has(#projects:target) .name,
+body:has(#projects:target) .subtitle,
+body:has(#projects:target) nav {
   color: var(--gruvbox-black);
-}
-
-body.about-active .title,
-body.about-active .name,
-body.about-active .subtitle,
-body.about-active nav {
-  color: var(--white);
-}
-
-body.experience-active .title,
-body.experience-active .name,
-body.experience-active .subtitle,
-body.experience-active nav {
-  color: var(--white);
-}
-
-body.about-active {
-  transition: 500ms;
-  background-color: var(--gruvbox-black);
 }
 
 nav a.link-active svg {
@@ -2625,6 +2641,98 @@ nav a.link-active svg {
 nav a.link-active span {
   --tw-translate-x: 1.75rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+/* @keyframes fade-in { */
+
+/*   from { opacity: 0; } */
+
+/* } */
+
+/* @keyframes fade-out { */
+
+/*   to { opacity: 0; } */
+
+/* } */
+
+/* @keyframes slide-from-right { */
+
+/*   from { transform: translateX(30px); } */
+
+/* } */
+
+/* @keyframes slide-to-left { */
+
+/*   to { transform: translateX(-30px); } */
+
+/* } */
+
+/* ::view-transition-old(root), */
+
+/* ::view-transition-new(root) { */
+
+/*   animation: 5s; */
+
+/* } */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-from-right {
+  from {
+    transform: translateX(30px);
+  }
+}
+
+@keyframes slide-from-left {
+  from {
+    transform: translateX(-30px);
+  }
+}
+
+@keyframes slide-to-left {
+  to {
+    transform: translateX(-30px);
+  }
+}
+
+::view-transition-old(sidebar) {
+  animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+::view-transition-new(sidebar) {
+  animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+    400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+}
+
+::view-transition-old(full-embed),
+::view-transition-new(full-embed) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-image-pair(full-embed) {
+  isolation: none;
+}
+
+.full-embed {
+  view-transition-name: full-embed;
+  contain: layout;
+}
+
+.sidebar {
+  view-transition-name: sidebar;
+  contain: layout;
 }
 
 @media (min-width: 640px) {
@@ -2697,6 +2805,10 @@ nav a.link-active span {
 .group:hover .group-hover\:translate-x-7 {
   --tw-translate-x: 1.75rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.group:hover .group-hover\:opacity-0 {
+  opacity: 0;
 }
 
 .group:hover .group-hover\:opacity-100 {

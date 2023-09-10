@@ -24,49 +24,29 @@
   --bg: var(--black);
 
   color-scheme: dark;
-
-  scroll-behavior: smooth;
 }
 
-#experience.active .title {
-  transition: 500ms;
-  color: var(--white);
+body, html {
+  height: 100%;
+  min-height: 100%;
 }
 
-body.experience-active {
-  transition: 500ms;
+body:has(#experience:target) .wrapper {
   background-color: var(--gruvbox-aqua);
 }
 
-body.projects-active {
-  transition: 500ms;
+body:has(#experience:target) .title {
+  color: var(--white);
+}
+
+body:has(#projects:target) .wrapper {
   background-color: var(--gruvbox-fg);
 }
-
-body.projects-active .title,
-body.projects-active .name,
-body.projects-active .subtitle,
-body.projects-active nav {
+body:has(#projects:target) .title,
+body:has(#projects:target) .name,
+body:has(#projects:target) .subtitle,
+body:has(#projects:target) nav {
   color: var(--gruvbox-black);
-}
-
-body.about-active .title,
-body.about-active .name,
-body.about-active .subtitle,
-body.about-active nav {
-  color: var(--white);
-}
-
-body.experience-active .title,
-body.experience-active .name,
-body.experience-active .subtitle,
-body.experience-active nav {
-  color: var(--white);
-}
-
-body.about-active {
-  transition: 500ms;
-  background-color: var(--gruvbox-black);
 }
 
 nav a.link-active svg {
@@ -75,4 +55,75 @@ nav a.link-active svg {
 
 nav a.link-active span {
   @apply translate-x-7;
+}
+
+/* @keyframes fade-in { */
+/*   from { opacity: 0; } */
+/* } */
+
+/* @keyframes fade-out { */
+/*   to { opacity: 0; } */
+/* } */
+
+/* @keyframes slide-from-right { */
+/*   from { transform: translateX(30px); } */
+/* } */
+
+/* @keyframes slide-to-left { */
+/*   to { transform: translateX(-30px); } */
+/* } */
+
+/* ::view-transition-old(root), */
+/* ::view-transition-new(root) { */
+/*   animation: 5s; */
+/* } */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes slide-from-right {
+  from { transform: translateX(30px); }
+}
+
+@keyframes slide-from-left {
+  from { transform: translateX(-30px); }
+}
+
+@keyframes slide-to-left {
+  to { transform: translateX(-30px); }
+}
+
+::view-transition-old(sidebar) {
+  animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+::view-transition-new(sidebar) {
+  animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+    400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+}
+
+::view-transition-old(full-embed),
+::view-transition-new(full-embed) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-image-pair(full-embed) {
+  isolation: none;
+}
+
+.full-embed {
+  view-transition-name: full-embed;
+  contain: layout;
+}
+
+.sidebar {
+  view-transition-name: sidebar;
+  contain: layout;
 }

@@ -1851,6 +1851,10 @@ video {
   background-color: var(--gruvbox-black);
 }
 
+.bg-gruvbox-fg {
+  background-color: var(--gruvbox-fg);
+}
+
 .bg-gruvbox-fg-700 {
   background-color: var(--gruvbox-fg-darker);
 }

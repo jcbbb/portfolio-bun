@@ -1,80 +1,53 @@
 import { readdir, stat, mkdir } from "node:fs/promises";
 
-let projects = [
-  {
-    slug: "needs",
-    presentation: "/public/images/needs/presentation.png",
-    featured: true,
-    title: "Needs",
-    description: "Developed checkout forms and APIs for e-commerce to accept online transactions",
-    images: [
-      {
-        url: "/public/images/needs/thumb.jpeg",
-        title: "Settings page"
-      },
-      {
-        url: "/public/images/needs/tg_image_650602355.jpeg",
-        title: "Homepage"
-      },
-      {
-        url: "/public/images/needs/tg_image_744815776.jpeg",
-        title: "Create posting"
-      },
-      {
-        url: "/public/images/needs/tg_image_903419734.jpeg",
-        title: "Privacy"
-      },
-      {
-        url: "/public/images/needs/tg_image_924628362.jpeg",
-        title: "Theme preferences"
-      },
-      {
-        url: "/public/images/needs/tg_image_1104690450.jpeg",
-        title: "Homepage menu"
-      },
-      {
-        url: "/public/images/needs/tg_image_1451174702.jpeg",
-        title: "Billing"
-      },
-      {
-        url: "/public/images/needs/tg_image_1923977961.jpeg",
-        title: "Public profile"
-      },
-      {
-        url: "/public/images/needs/tg_image_3201400914.jpeg",
-        title: "Create account"
-      },
-      {
-        url: "/public/images/needs/tg_image_3239717779.jpeg",
-        title: "Login page"
-      },
-      {
-        url: "/public/images/needs/tg_image_3441812393.jpeg",
-        title: "Chat"
-      },
-      {
-        url: "/public/images/needs/tg_image_3555869238.jpeg",
-        title: "Create posting (2nd step)"
-      },
-    ],
-  }
-]
-
-export async function generatePages(input = "./pages", output = "./static") {
+export async function generatePages(input = "./pages", output = "./static", route = "", routes = []) {
   let files = await readdir(input);
   if (!files.length) return;
 
   for (let path of files) {
     let inputpath = input + "/" + path;
-    let outputpath = output + "/" + path;
     let isDirectory = (await stat(inputpath)).isDirectory();
     if (isDirectory) {
-      await mkdir(outputpath, { recursive: true });
-      generatePages(inputpath, output);
+      await Promise.all([
+        mkdir(output + "/" + path, { recursive: true }),
+        generatePages(inputpath, output + "/" + path, route + "/" + path, routes)
+      ]);
     } else {
-      let { render } = await import(inputpath);
-      let result = await Bun.write(outputpath.slice(0, -3) + ".html", render());
-      console.log({ result })
+      let cleanpath = stripExt(path);
+      let param = parseParam(cleanpath);
+      let { render, data } = await import(inputpath);
+      if (param && data) {
+        let result = data();
+        for (let item of result) {
+          let slug = item.params[param];
+          let out = output + "/" + slug + ".html";
+          let publicRoute = route + "/" + slug;
+          routes.push([publicRoute, out]);
+          await Bun.write(out, render(item.props));
+        }
+        return;
+      }
+
+      let out = output + "/" + cleanpath + ".html";
+      let publicRoute = route + "/" + cleanpath;
+      if (cleanpath === "index") routes.push([route + "/", out]);
+      routes.push([publicRoute, out])
+      await Bun.write(out, render(data?.props));
     }
+  }
+
+  return routes;
+}
+
+let paramRegex = /\[(?<param>\w+)\]/
+
+function stripExt(filename) {
+  return filename.split(".").slice(0, -1).join(".");
+}
+
+function parseParam(filename) {
+  let match = filename.match(paramRegex);
+  if (match) {
+    return match.groups.param;
   }
 }

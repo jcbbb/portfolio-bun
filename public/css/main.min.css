@@ -712,6 +712,14 @@ video {
   margin-top: 5rem;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -827,10 +835,6 @@ video {
   height: 100vh;
 }
 
-.min-h-full {
-  min-height: 100%;
-}
-
 .w-5 {
   width: 1.25rem;
 }
@@ -846,10 +850,6 @@ video {
 
 .max-w-full {
   max-width: 100%;
-}
-
-.max-w-lg {
-  max-width: 32rem;
 }
 
 .max-w-screen-xl {
@@ -1873,16 +1873,16 @@ video {
   background-color: var(--gruvbox-aqualight);
 }
 
-.bg-gruvbox-black {
-  background-color: var(--gruvbox-black);
-}
-
 .bg-gruvbox-fg {
   background-color: var(--gruvbox-fg);
 }
 
 .bg-gruvbox-fg-700 {
   background-color: var(--gruvbox-fg-darker);
+}
+
+.bg-gruvbox-purple {
+  background-color: var(--gruvbox-purple);
 }
 
 .decoration-slice {
@@ -1970,6 +1970,10 @@ video {
   background-origin: content-box;
 }
 
+.stroke-2 {
+  stroke-width: 2;
+}
+
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
@@ -1999,9 +2003,9 @@ video {
   padding: 0.75rem;
 }
 
-.px-24 {
-  padding-left: 6rem;
-  padding-right: 6rem;
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .px-3 {
@@ -2014,6 +2018,11 @@ video {
   padding-right: 1.5rem;
 }
 
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -2022,6 +2031,11 @@ video {
 .py-24 {
   padding-top: 6rem;
   padding-bottom: 6rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .pb-24 {
@@ -2227,13 +2241,12 @@ video {
   color: var(--gruvbox-black);
 }
 
-.text-gruvbox-purple {
-  color: var(--gruvbox-purple);
+.text-gruvbox-green {
+  color: var(--gruvbox-green);
 }
 
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+.text-gruvbox-purple {
+  color: var(--gruvbox-purple);
 }
 
 .underline {
@@ -2597,38 +2610,15 @@ video {
   --gruvbox-gray: #A89984;
   --white: #ffffff;
   --gruvbox-purple: #B16286;
+  --gruvbox-purple-light: #D3869B;
   --gruvbox-fg: #F9F5D7;
   --gruvbox-fg-darker: #FBF1C7;
   --bg: var(--black);
   color-scheme: dark;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body, html {
-  height: 100%;
-  min-height: 100%;
-}
-
-body:has(#experience:target) .wrapper {
-  background-color: var(--gruvbox-aqua);
-}
-
-body:has(#experience:target) .title {
-  color: var(--white);
-}
-
-body:has(#projects:target) .wrapper {
+body {
   background-color: var(--gruvbox-fg);
-}
-
-body:has(#projects:target) .title,
-body:has(#projects:target) .name,
-body:has(#projects:target) .subtitle,
-body:has(#projects:target) nav {
-  color: var(--gruvbox-black);
 }
 
 nav a.link-active svg {
@@ -2641,38 +2631,6 @@ nav a.link-active span {
   --tw-translate-x: 1.75rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-
-/* @keyframes fade-in { */
-
-/*   from { opacity: 0; } */
-
-/* } */
-
-/* @keyframes fade-out { */
-
-/*   to { opacity: 0; } */
-
-/* } */
-
-/* @keyframes slide-from-right { */
-
-/*   from { transform: translateX(30px); } */
-
-/* } */
-
-/* @keyframes slide-to-left { */
-
-/*   to { transform: translateX(-30px); } */
-
-/* } */
-
-/* ::view-transition-old(root), */
-
-/* ::view-transition-new(root) { */
-
-/*   animation: 5s; */
-
-/* } */
 
 @keyframes fade-in {
   from {
@@ -2715,7 +2673,7 @@ nav a.link-active span {
 
 ::view-transition-new(sidebar) {
   animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
-    400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 
 ::view-transition-old(full-embed),
@@ -2774,6 +2732,10 @@ nav a.link-active span {
   }
 }
 
+.hover\:bg-gruvbox-purple-500:hover {
+  background-color: var(--gruvbox-purple-light);
+}
+
 .hover\:font-bold:hover {
   font-weight: 700;
 }
@@ -2825,12 +2787,40 @@ nav a.link-active span {
 }
 
 @media (min-width: 768px) {
+  .md\:sticky {
+    position: sticky;
+  }
+
+  .md\:block {
+    display: block;
+  }
+
+  .md\:max-w-lg {
+    max-width: 32rem;
+  }
+
   .md\:max-w-md {
     max-width: 28rem;
   }
 
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:space-x-12 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(3rem * var(--tw-space-x-reverse));
+    margin-left: calc(3rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .md\:px-24 {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  .md\:py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 
   .md\:pt-16 {

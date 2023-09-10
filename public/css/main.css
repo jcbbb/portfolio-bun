@@ -18,6 +18,7 @@
   --gruvbox-gray: #A89984;
   --white: #ffffff;
   --gruvbox-purple: #B16286;
+  --gruvbox-purple-light: #D3869B;
   --gruvbox-fg: #F9F5D7;
   --gruvbox-fg-darker: #FBF1C7;
 
@@ -26,31 +27,8 @@
   color-scheme: dark;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body, html {
-  height: 100%;
-  min-height: 100%;
-}
-
-body:has(#experience:target) .wrapper {
-  background-color: var(--gruvbox-aqua);
-}
-
-body:has(#experience:target) .title {
-  color: var(--white);
-}
-
-body:has(#projects:target) .wrapper {
+body {
   background-color: var(--gruvbox-fg);
-}
-body:has(#projects:target) .title,
-body:has(#projects:target) .name,
-body:has(#projects:target) .subtitle,
-body:has(#projects:target) nav {
-  color: var(--gruvbox-black);
 }
 
 nav a.link-active svg {
@@ -60,27 +38,6 @@ nav a.link-active svg {
 nav a.link-active span {
   @apply translate-x-7;
 }
-
-/* @keyframes fade-in { */
-/*   from { opacity: 0; } */
-/* } */
-
-/* @keyframes fade-out { */
-/*   to { opacity: 0; } */
-/* } */
-
-/* @keyframes slide-from-right { */
-/*   from { transform: translateX(30px); } */
-/* } */
-
-/* @keyframes slide-to-left { */
-/*   to { transform: translateX(-30px); } */
-/* } */
-
-/* ::view-transition-old(root), */
-/* ::view-transition-new(root) { */
-/*   animation: 5s; */
-/* } */
 
 @keyframes fade-in {
   from { opacity: 0; }
@@ -113,7 +70,7 @@ nav a.link-active span {
 
 ::view-transition-new(sidebar) {
   animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
-    400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 
 ::view-transition-old(full-embed),

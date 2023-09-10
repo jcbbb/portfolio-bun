@@ -65,44 +65,44 @@ export let projects = [
     images: [
       {
         url: "/public/images/meitao/tg_image_675237003.jpeg",
-        title: "Settings page"
+        title: "User orders"
       },
       {
         url: "/public/images/meitao/tg_image_690807538.jpeg",
-        title: "Homepage"
+        title: "Checkout"
       },
       {
         url: "/public/images/meitao/tg_image_1251641797.jpeg",
-        title: "Create posting"
+        title: "Create account"
       },
       {
         url: "/public/images/meitao/tg_image_1266323597.jpeg",
-        title: "Create posting"
+        title: "Log in"
       },
       {
         url: "/public/images/meitao/tg_image_2259395398.jpeg",
-        title: "Create posting"
+        title: "Single product"
       },
       {
         url: "/public/images/meitao/tg_image_2738181830.jpeg",
-        title: "Create posting"
+        title: "Contact page"
       },
       {
         url: "/public/images/meitao/tg_image_2882574625.jpeg",
-        title: "Create posting"
+        title: "Cart"
       },
       {
         url: "/public/images/meitao/tg_image_3482919876.jpeg",
-        title: "Create posting"
+        title: "Homepage search"
       },
       {
         url: "/public/images/meitao/tg_image_3653988789.jpeg",
-        title: "create posting"
+        title: "Search results"
       },
 
       {
         url: "/public/images/meitao/tg_image_3914346227.jpeg",
-        title: "create posting"
+        title: "Add address"
       },
     ],
   }

@@ -18,7 +18,8 @@ module.exports = {
           500: "var(--gruvbox-aqualight)",
         },
         "gruvbox-purple": {
-          DEFAULT: "var(--gruvbox-purple)"
+          DEFAULT: "var(--gruvbox-purple)",
+          500: "var(--gruvbox-purple-light)",
         },
         "gruvbox-fg": {
           DEFAULT: "var(--gruvbox-fg)",

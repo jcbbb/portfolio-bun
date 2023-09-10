@@ -8,8 +8,6 @@ export function render() {
       <meta name="description" content="Portfolio" />
       <meta name="viewport" content="width=device-width" />
       <link rel="stylesheet" href="/public/css/main.min.css" type="text/css" media="screen" />
-      <script src="https://unpkg.com/htmx.org@1.9.5"></script>
-      <meta name="htmx-config" content='{"defaultSettleDelay": 0, "scrollBehavior": "auto"}'></meta>
       <title>Portfolio</title>
     </head>
     <body>
@@ -110,9 +108,9 @@ export function render() {
               </ul>
             </div>
             <div id="projects" class="h-screen pb-24 scroll-mt-24 section">
-              <ul hx-boost="true" hx-swap="innerHTML transition:true">
+              <ul class="flex flex-col projects-list">
                 ${projects.map((project) => (
-                  `<li>
+                  `<li class="mb-44">
                     <a class="flex relative group" href="/projects/${project.slug}">
                       <div class="flex flex-col relative z-[2] default-transition">
                         ${project.featured ? `<span class="text-sm uppercase tracking-tight text-gruvbox-purple font-medium">Featured</span>` : ''}
@@ -123,11 +121,11 @@ export function render() {
                       </div>
                       <div class="absolute z-[1] translate-x-2/3 rounded-md overflow-hidden">
                         <div class="w-full h-full bg-gruvbox-fg opacity-60 absolute duration-1000 group-hover:opacity-0"></div>
-                        <img src="${project.presentation}" class="max-w-full full-embed" />
+                        <img src="${project.presentation}" class="max-w-full" />
                       </div>
                     </a>
                   </li>`
-                ))}
+                )).join("")}
               </ul>
             </div>
           </main>

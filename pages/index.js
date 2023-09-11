@@ -1,5 +1,11 @@
 import { projects } from "../projects.js";
 
+export function headers() {
+  return {
+    "Cache-Control": "public, max-age=600, stale-while-revalidate=3600"
+  }
+}
+
 export function render() {
   return `
   <html lang="en">
@@ -11,9 +17,9 @@ export function render() {
       <title>Portfolio</title>
     </head>
     <body class="bg-gruvbox-fg">
-      <div class="flex max-w-screen-xl px-12 flex-col md:flex-row md:space-x-12 md:px-24 w-full mx-auto justify-between">
-        <aside class="md:sticky top-0 h-full py-16 md:py-24">
-          <section class="flex flex-col space-y-2 text-gruvbox-black">
+      <div class="flex max-w-screen-xl md:px-12 lg:px-24 flex-col md:flex-row md:space-x-12 w-full mx-auto justify-between">
+        <aside class="md:sticky top-0 h-full pt-16 md:py-24">
+          <section class="flex flex-col space-y-2 text-gruvbox-black px-6 md:px-0">
             <h1 class="text-5xl font-semibold duration-500 tracking-tight">Avazbek Juraev</h1>
             <span class="text-xl font-medium duration-500 tracking-tight">Software Engineer</span>
             <p class="duration-500 leading-normal">Building websites that are both beautiful and functional.</p>
@@ -58,92 +64,106 @@ export function render() {
           </nav>
         </aside>
         <main class="md:max-w-lg text-gruvbox-black">
-          <div id="about" class="h-screen py-24 scroll-mt-24 space-y-3 section">
-            <p>
-              I am a software engineer with 3+ years of experience in full stack development. I am proficient in a variety of technologies,
-              including HTML, CSS, JavaScript, React, Vue, Node.js, and Golang. I am also experienced in working with a variety of frameworks, such as Fastify, Express
-            </p>
-            <p>
-              I am passionate about creating beautiful and functional websites that users love. I am also a strong believer in user-centered design, and I always put the user first in my work.
-            </p>
-            <p>
-              I am a highly motivated and results-oriented individual. I am always looking for new challenges and ways to improve my skills. I am also a team player and I am always willing to help others.
-            </p>
-            <p>
-              I am confident that I have the skills and experience to be a valuable asset to your team. I am eager to learn more about your company and the work that you do. I am also excited to contribute to your success.
-            </p>
-          </div>
-          <div id="experience" class="h-screen pb-24 scroll-mt-24 space-y-5 section">
-            <div class="flex flex-col space-y-1">
-              <strong class="text-lg font-medium">Fullstack Engineer @ <a class="underline" href="https://aloqabank.uz">Aloqabank</a></strong>
-              <span class="text-sm">2020 - August 2023</span>
+          <div id="about" class="min-h-screen pt-16 scroll-mt-24 space-y-5 section">
+            <div class="sticky top-0 py-3 px-6 lg:pl-16 md:hidden w-full flex-shrink-0 bg-gruvbox-fg text-gruvbox-black text-sm tracking-tight uppercase font-medium">
+              About
             </div>
-            <ul class="space-y-3">
-              <li class="flex gap-2 items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 -ml-2 flex-shrink-0 rounded-full text-gruvbox-purple stroke-2">
-                  <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-                </svg>
-                <p>Developed user interface for <a href="https://mohirlar.uz" class="underline">Mohirlar.uz</a> using React and TailwindCSS</p>
-              </li>
-              <li class="flex gap-2 items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 -ml-2 flex-shrink-0 rounded-full text-gruvbox-purple stroke-2">
-                  <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-                </svg>
-                <p>Architected APIs for payments (e.g. Stripe), designed checkout forms for e-commerce businesses to accept online payments - <a href="https://pay.zoomrad.uz" class="underline">Zoomrad Pay</a></p>
-              </li>
-              <li class="flex gap-2 items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 -ml-2 flex-shrink-0 rounded-full text-gruvbox-purple stroke-2">
-                  <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-                </svg>
-                <p>Built complex dashboards for <a href="https://zoomrad.uz" class="underline">Zoomrad</a> using Vue.js, Ant Design and Node.js</p>
-              </li>
-              <li class="flex gap-2 items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 -ml-2 flex-shrink-0 rounded-full text-gruvbox-purple stroke-2">
-                  <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-                </svg>
-                <p>Built dashboard for <a href="https://pay.zoomrad.uz" class="underline">Zoomrad Pay</a> using Vue.js, Material UI and Node.js. It features monitoring for payments,
-                  transaction statistics, bank account debit/credits, refunds and webhooks to receive updates about transaction process.</p>
-              </li>
-            </ul>
-            <ul class="flex gap-3 flex-wrap">
-              <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">JavaScript</li>
-              <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">React</li>
-              <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">Vue</li>
-              <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">Node.js</li>
-              <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">TailwindCSS</li>
-              <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">PostgreSQL</li>
-              <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">Elasticsearch</li>
-              <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">Golang</li>
-            </ul>
+            <div class="space-y-3 px-6">
+              <p>
+                I am a software engineer with 3+ years of experience in full stack development. I am proficient in a variety of technologies,
+                including HTML, CSS, JavaScript, React, Vue, Node.js, and Golang. I am also experienced in working with a variety of frameworks, such as Fastify, Express
+              </p>
+              <p>
+                I am passionate about creating beautiful and functional websites that users love. I am also a strong believer in user-centered design, and I always put the user first in my work.
+              </p>
+              <p>
+                I am a highly motivated and results-oriented individual. I am always looking for new challenges and ways to improve my skills. I am also a team player and I am always willing to help others.
+              </p>
+              <p>
+                I am confident that I have the skills and experience to be a valuable asset to your team. I am eager to learn more about your company and the work that you do. I am also excited to contribute to your success.
+              </p>
+            </div>
           </div>
-          <div id="projects" class="h-screen pb-24 scroll-mt-24 section">
-            <ul class="flex flex-col projects-list">
+          <div id="experience" class="min-h-screen pt-16 md:pt-0 scroll-mt-24 space-y-5 section">
+            <div class="sticky top-0 py-3 px-6 lg:pl-16 md:hidden w-full flex-shrink-0 bg-gruvbox-fg text-gruvbox-black text-sm tracking-tight uppercase font-medium">
+              Experience
+            </div>
+            <div class="px-6 md:px-0 space-y-5">
+              <div class="flex flex-col space-y-1">
+                <strong class="text-lg font-medium">Fullstack Engineer @ <a class="underline" href="https://aloqabank.uz">Aloqabank</a></strong>
+                <span class="text-sm">2020 - August 2023</span>
+              </div>
+              <ul class="space-y-3">
+                <li class="flex gap-2 items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 -ml-2 flex-shrink-0 rounded-full text-gruvbox-purple stroke-2">
+                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                  </svg>
+                  <p>Developed user interface for <a href="https://mohirlar.uz" class="underline">Mohirlar.uz</a> using React and TailwindCSS</p>
+                </li>
+                <li class="flex gap-2 items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 -ml-2 flex-shrink-0 rounded-full text-gruvbox-purple stroke-2">
+                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                  </svg>
+                  <p>Architected APIs for payments (e.g. Stripe), designed checkout forms for e-commerce businesses to accept online payments - <a href="https://pay.zoomrad.uz" class="underline">Zoomrad Pay</a></p>
+                </li>
+                <li class="flex gap-2 items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 -ml-2 flex-shrink-0 rounded-full text-gruvbox-purple stroke-2">
+                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                  </svg>
+                  <p>Built complex dashboards for <a href="https://zoomrad.uz" class="underline">Zoomrad</a> using Vue.js, Ant Design and Node.js</p>
+                </li>
+                <li class="flex gap-2 items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 -ml-2 flex-shrink-0 rounded-full text-gruvbox-purple stroke-2">
+                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                  </svg>
+                  <p>Built dashboard for <a href="https://pay.zoomrad.uz" class="underline">Zoomrad Pay</a> using Vue.js, Material UI and Node.js. It features monitoring for payments,
+                    transaction statistics, bank account debit/credits, refunds and webhooks to receive updates about transaction process.</p>
+                </li>
+              </ul>
+              <ul class="flex gap-3 flex-wrap">
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">JavaScript</li>
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">React</li>
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">Vue</li>
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">Node.js</li>
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">TailwindCSS</li>
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">PostgreSQL</li>
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">Elasticsearch</li>
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">Golang</li>
+              </ul>
+            </div>
+          </div>
+          <div id="projects" class="min-h-screen pt-16 md:pt-0 space-y-5 scroll-mt-24 section">
+            <div class="sticky top-0 py-3 px-6 lg:pl-16 md:hidden w-full z-10 flex-shrink-0 bg-gruvbox-fg text-gruvbox-black text-sm tracking-tight uppercase font-medium">
+              Projects
+            </div>
+            <ul class="flex flex-col space-y-12 px-6 md:px-0">
               ${projects.map((project) => (
-    `<li class="mb-44">
-                  <a class="flex relative group" href="/projects/${project.slug}">
-                    <div class="flex flex-col relative z-[2] description">
+    `<li>
+                  <a class="flex flex-col space-y-4 relative group" href="/projects/${project.slug}">
+                    <div class="flex flex-col title">
                       ${project.featured ? `<span class="text-sm uppercase tracking-tight text-gruvbox-purple font-medium">Featured</span>` : ''}
                       <strong class="text-3xl font-semibold text-gruvbox-black">${project.title}</strong>
-                      <p class="p-3 bg-gruvbox-fg-700 text-gruvbox-black rounded-md mt-2 max-w-sm">
-                        ${project.description}
-                      </p>
                     </div>
-                    <div class="absolute z-[1] translate-x-2/3 rounded-md overflow-hidden">
-                      <div class="w-full h-full bg-gruvbox-fg opacity-60 absolute duration-1000 group-hover:opacity-0"></div>
-                      <img src="${project.presentation}" class="max-w-full" />
+                    <div>
+                      <img src="${project.presentation}" class="max-w-full rounded-xl contain" />
                     </div>
                   </a>
                 </li>`
   )).join("")}
             </ul>
           </div>
-          <div id="contact" class="h-screen pb-24 scroll-mt-24 section">
-            <strong class="text-lg font-medium">Feel free to reach out</strong>
-            <p class="mt-3">
-              I'm always looking for new challenges, so if you have any web development projects that you're looking to get done,
-              please don't hesitate to contact me. I'm confident that I can help you create a website that meets your needs and exceeds your expectations.
-            </p>
-            <a href="mailto:me@homeless.dev" class="mt-5 inline-block duration-500 bg-gruvbox-purple text-gruvbox-black font-medium rounded-md py-3 px-6 hover:bg-gruvbox-purple-500">SAY HELLO</a>
+          <div id="contact" class="min-h-screen pt-16 md:pt-0 space-y-5 scroll-mt-24 section">
+            <div class="sticky top-0 py-3 px-6 lg:pl-16 md:hidden w-full z-10 flex-shrink-0 bg-gruvbox-fg text-gruvbox-black text-sm tracking-tight uppercase font-medium">
+              Contact
+            </div>
+            <div class="px-6 md:px-0">
+              <strong class="text-lg font-medium">Feel free to reach out</strong>
+              <p class="mt-3">
+                I'm always looking for new challenges, so if you have any web development projects that you're looking to get done,
+                please don't hesitate to contact me. I'm confident that I can help you create a website that meets your needs and exceeds your expectations.
+              </p>
+              <a href="mailto:me@homeless.dev" class="mt-5 inline-block duration-500 bg-gruvbox-purple text-gruvbox-black font-medium rounded-md py-3 px-6 hover:bg-gruvbox-purple-500">SAY HELLO</a>
+            </div>
           </div>
         </main>
       </div>

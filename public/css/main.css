@@ -59,18 +59,32 @@ nav a.link-active span {
   to { transform: translateX(-30px); }
 }
 
-.projects-list img {
-  contain: layout;
+@keyframes slide-to-top {
+  to { transform: translateY(30px); }
 }
 
-::view-transition-old(sidebar) {
+@keyframes slide-from-top {
+  from { transform: translateY(-30px); }
+}
+
+::view-transition-old(project-title) {
   animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
 
-::view-transition-new(sidebar) {
+::view-transition-new(project-title) {
   animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
     300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+}
+
+::view-transition-old(description) {
+  animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+::view-transition-new(description) {
+  animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-left;
 }
 
 ::view-transition-old(full-embed),
@@ -88,7 +102,10 @@ nav a.link-active span {
   contain: layout;
 }
 
-.sidebar {
-  view-transition-name: sidebar;
-  contain: layout;
+.description {
+  view-transition-name: description;
+}
+
+.project-title {
+  view-transition-name: project-title;
 }

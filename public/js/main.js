@@ -1,6 +1,8 @@
 let sections = document.querySelectorAll(".section");
 let nav = document.querySelector("nav");
 
+let ongoingTansition
+
 if (nav) {
   let links = nav.querySelectorAll("a");
   let observer = new IntersectionObserver((entries, observer) => {
@@ -64,9 +66,12 @@ function onLinkNavigate(callback) {
             fromPath,
             isBack
           });
+
+          await ongoingTansition.updateCallbackDone;
+
           event.scroll();
           if (event.navigationType === "push" || event.navigationType === "replace") {
-            window.scrollTo({ behavior: "instant", top: 0 })
+            window.scrollTo(0, 0)
           }
         }
       })
@@ -104,10 +109,12 @@ function transitionHelper({
   document.documentElement.classList.add(...classNamesArray);
 
   let transition = document.startViewTransition(updateDOM);
+  ongoingTansition = transition;
 
-  transition.finished.finally(() =>
+  transition.finished.finally(() => {
+    ongoingTansition = undefined;
     document.documentElement.classList.remove(...classNamesArray)
-  );
+  });
 
   return transition;
 }
@@ -131,13 +138,13 @@ onLinkNavigate(async ({ fromPath, toPath }) => {
   let doc = parser.parseFromString(content, "text/html");
 
   let thumbnail
-  let description
+  let title
   if (type === "to-projects") {
     let link = getLink(toPath);
     thumbnail = link?.querySelector("img");
-    description = link?.querySelector(".description");
+    title = link?.querySelector(".title");
     if (thumbnail) thumbnail.style.viewTransitionName = "full-embed";
-    if (description) description.style.viewTransitionName = "sidebar";
+    if (title) title.style.viewTransitionName = "project-title";
   }
 
   let transition = transitionHelper({
@@ -146,15 +153,15 @@ onLinkNavigate(async ({ fromPath, toPath }) => {
       if (type === "from-projects") {
         let link = getLink(fromPath);
         thumbnail = link?.querySelector("img");
-        description = link?.querySelector(".description");
-        thumbnail.style.viewTransitionName = "full-embed";
-        description.style.viewTransitionName = "sidebar";
+        title = link?.querySelector(".title");
+        if (thumbnail) thumbnail.style.viewTransitionName = "full-embed";
+        if (title) title.style.viewTransitionName = "project-title";
       }
     }
   });
 
   transition.finished.finally(() => {
     if (thumbnail) thumbnail.style.viewTransitionName = "";
-    if (description) description.style.viewTransitionName = "";
+    if (title) title.style.viewTransitionName = "";
   });
 })

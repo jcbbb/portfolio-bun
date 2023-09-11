@@ -15,14 +15,14 @@ export async function generatePages(input = "./pages", output = "./static", rout
     } else {
       let cleanpath = stripExt(path);
       let param = parseParam(cleanpath);
-      let { render, data } = await import(inputpath);
+      let { render, data, headers } = await import(inputpath);
       if (param && data) {
         let result = data();
         for (let item of result) {
           let slug = item.params[param];
           let out = output + "/" + slug + ".html";
           let publicRoute = route + "/" + slug;
-          routes.push([publicRoute, out]);
+          routes.push([publicRoute, out, headers?.()]);
           await Bun.write(out, render(item.props));
         }
         return;
@@ -31,7 +31,7 @@ export async function generatePages(input = "./pages", output = "./static", rout
       let out = output + "/" + cleanpath + ".html";
       let publicRoute = route + "/" + cleanpath;
       if (cleanpath === "index") routes.push([route + "/", out]);
-      routes.push([publicRoute, out])
+      routes.push([publicRoute, out, headers?.()])
       await Bun.write(out, render(data?.props));
     }
   }

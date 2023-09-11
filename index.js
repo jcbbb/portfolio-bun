@@ -1,7 +1,7 @@
 import { generatePages } from "./pages.js";
 import { readdir, stat } from "node:fs/promises";
 
-let port = 6990;
+let port = parseInt(process.env.PORT, 10) || 6990;
 let results = await generatePages();
 let routes = {}
 for (let result of results) {

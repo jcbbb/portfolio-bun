@@ -105,5 +105,42 @@ export let projects = [
         title: "Add address"
       },
     ],
+  },
+  {
+    slug: "mohirlar",
+    presentation: "/public/images/mohirlar/thumb.jpeg",
+    featured: true,
+    title: "Mohirlar",
+    description: "Job board to connect freelancers with clients",
+    images: [
+      {
+        url: "/public/images/mohirlar/tg_image_353393427.jpeg",
+        title: "Login"
+      },
+      {
+        url: "/public/images/mohirlar/tg_image_1071431201.jpeg",
+        title: "Search orders"
+      },
+      {
+        url: "/public/images/mohirlar/tg_image_2648119496.jpeg",
+        title: "Service catalog"
+      },
+      {
+        url: "/public/images/mohirlar/tg_image_3135104454.jpeg",
+        title: "Homepage"
+      },
+      {
+        url: "/public/images/mohirlar/tg_image_3152678118.jpeg",
+        title: "Create order"
+      },
+      {
+        url: "/public/images/mohirlar/tg_image_3559666225.jpeg",
+        title: "Industry selection"
+      },
+      {
+        url: "/public/images/mohirlar/tg_image_4219472136.jpeg",
+        title: "Notificatons & Search"
+      }
+    ],
   }
 ]

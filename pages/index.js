@@ -132,7 +132,7 @@ export function render() {
               </ul>
             </div>
           </div>
-          <div id="projects" class="min-h-screen pt-16 md:pt-0 space-y-5 scroll-mt-24 section">
+          <div id="projects" class="min-h-screen py-16 md:pt-0 space-y-5 scroll-mt-24 section">
             <div class="sticky top-0 py-3 px-6 lg:pl-16 md:hidden w-full z-10 flex-shrink-0 bg-gruvbox-fg text-gruvbox-black text-sm tracking-tight uppercase font-medium">
               Projects
             </div>

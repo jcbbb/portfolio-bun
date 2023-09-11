@@ -30,7 +30,7 @@ export async function generatePages(input = "./pages", output = "./static", rout
 
       let out = output + "/" + cleanpath + ".html";
       let publicRoute = route + "/" + cleanpath;
-      if (cleanpath === "index") routes.push([route + "/", out]);
+      if (cleanpath === "index") routes.push([route + "/", out, headers?.()]);
       routes.push([publicRoute, out, headers?.()])
       await Bun.write(out, render(data?.props));
     }

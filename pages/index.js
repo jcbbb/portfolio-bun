@@ -137,19 +137,29 @@ export function render() {
               Projects
             </div>
             <ul class="flex flex-col space-y-12 px-6 md:px-0">
-              ${projects.map((project) => (
-    `<li>
+              ${projects.map((project) => {
+                let parts = project.presentation.original.split("/");
+                let name = parts.pop().replace(/\.[^/.]+$/, "");
+                let base = parts.join("/");
+                return `
+                  <li>
                   <a class="flex flex-col space-y-4 relative group" href="/projects/${project.slug}">
                     <div class="flex flex-col title">
                       ${project.featured ? `<span class="text-sm uppercase tracking-tight text-gruvbox-purple font-medium">Featured</span>` : ''}
                       <strong class="text-3xl font-semibold text-gruvbox-black">${project.title}</strong>
                     </div>
-                    <div>
-                      <img src="${project.presentation}" class="max-w-full rounded-xl contain" />
-                    </div>
+                    <picture>
+                      ${project.presentation.formats.map((format) => (
+                        `<source
+                          type="image/${format}"
+                          srcset="${project.presentation.sizes.map((size) => `${base}/${format}/${name}-${size}.${format} ${size}w`).join(", ")}"
+                          ></source>`
+                      )).join("")}
+                      <img src="${project.presentation.original}" class="max-w-wfull rounded-xl contain" loading="lazy" decoding="async" />
+                    </picture>
                   </a>
                 </li>`
-  )).join("")}
+              }).join("")}
             </ul>
           </div>
           <div id="contact" class="min-h-screen pt-16 md:pt-0 space-y-5 scroll-mt-24 section">

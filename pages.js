@@ -17,7 +17,7 @@ export async function generatePages(input = "./pages", output = "./static", rout
       let param = parseParam(cleanpath);
       let { render, data, headers } = await import(inputpath);
       if (param && data) {
-        let result = data();
+        let result = await data();
         for (let item of result) {
           let slug = item.params[param];
           let out = output + "/" + slug + ".html";

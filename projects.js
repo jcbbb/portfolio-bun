@@ -3,7 +3,7 @@ export let projects = [
     slug: "needs",
     presentation: {
       original: "/public/images/needs/presentation.png",
-      formats: ["avif", "webp"],
+      formats: ["webp"],
       sizes: [400, 600, 800, 1000, 1200, 1600, 2000, 2400, 2800, 3200, 3600, 4000]
     },
     featured: true,

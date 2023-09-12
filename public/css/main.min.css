@@ -687,6 +687,14 @@ video {
   margin: 0.25rem;
 }
 
+.-m-2 {
+  margin: -0.5rem;
+}
+
+.-m-2\.5 {
+  margin: -0.625rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -714,6 +722,18 @@ video {
 
 .mt-6 {
   margin-top: 1.5rem;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.mt-12 {
+  margin-top: 3rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
 }
 
 .box-border {
@@ -838,10 +858,6 @@ video {
 .max-w-fit {
   max-width: -moz-fit-content;
   max-width: fit-content;
-}
-
-.max-w-full {
-  max-width: 100%;
 }
 
 .max-w-screen-xl {
@@ -1383,6 +1399,10 @@ video {
 
 .gap-3 {
   gap: 0.75rem;
+}
+
+.gap-4 {
+  gap: 1rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -2002,6 +2022,14 @@ video {
   padding: 0.75rem;
 }
 
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-2\.5 {
+  padding: 0.625rem;
+}
+
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -2025,6 +2053,11 @@ video {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .pb-24 {
@@ -2746,6 +2779,10 @@ nav a.link-active span {
   color: var(--gruvbox-green);
 }
 
+.hover\:text-gruvbox-purple:hover {
+  color: var(--gruvbox-purple);
+}
+
 .before\:hover\:text-center:hover::before {
   content: var(--tw-content);
   text-align: center;
@@ -2789,12 +2826,20 @@ nav a.link-active span {
     position: sticky;
   }
 
+  .md\:mt-auto {
+    margin-top: auto;
+  }
+
   .md\:block {
     display: block;
   }
 
   .md\:hidden {
     display: none;
+  }
+
+  .md\:min-h-screen {
+    min-height: 100vh;
   }
 
   .md\:max-w-lg {
@@ -2842,6 +2887,10 @@ nav a.link-active span {
 @media (min-width: 1024px) {
   .lg\:sticky {
     position: sticky;
+  }
+
+  .lg\:mt-20 {
+    margin-top: 5rem;
   }
 
   .lg\:px-16 {

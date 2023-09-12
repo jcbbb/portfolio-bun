@@ -28,8 +28,8 @@ async function generate({ original, sizes, formats } = {}) {
 
 export async function data() {
   //for (let project of projects) {
-   // await generate(project.presentation)
-    //await Promise.all(project.images.map(generate));
+  // await generate(project.presentation)
+  //await Promise.all(project.images.map(generate));
   //}
 
 
@@ -57,6 +57,20 @@ export function render({ project, base, name }) {
         <meta charset="UTF-8" />
         <meta name="description" content="${project.description}" />
         <meta name="viewport" content="width=device-width" />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://portfolio.homeless.dev/projects/${project.slug}" />
+        <meta property="og:title" content="${project.title}" />
+        <meta property="og:description" content="${project.description}" />
+        <meta property="og:image" content="${base}/webp/${name}-1200.webp" />
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://portfolio.homeless.dev/projects/${project.slug}" />
+        <meta property="twitter:title" content="${project.title}" />
+        <meta property="twitter:description" content="${project.description}" />
+        <meta property="twitter:image" content="${base}/webp/${name}-1200.webp" />
+
         <link rel="stylesheet" href="/public/css/main.min.css" type="text/css" media="screen" />
         <title>${project.title}</title>
       </head>
@@ -88,10 +102,10 @@ export function render({ project, base, name }) {
         <main class="mt-6 pb-24">
           <ul class="space-y-6">
             ${project.images.map((image) => {
-                let parts = image.original.split("/");
-                let name = parts.pop().replace(/\.[^/.]+$/, "");
-                let base = parts.join("/");
-                return `
+              let parts = image.original.split("/");
+              let name = parts.pop().replace(/\.[^/.]+$/, "");
+              let base = parts.join("/");
+              return `
                   <li class="flex flex-col md:flex-row">
                     <div class="sticky top-0 h-full py-2 px-6 lg:pl-16 md:max-w-md w-full flex-shrink-0 bg-gruvbox-fg text-gruvbox-black text-lg tracking-tight">${image.title}</div>
                     <div class="px-6 lg:px-16">
@@ -101,12 +115,12 @@ export function render({ project, base, name }) {
                             type="image/${format}"
                             srcset="${image.sizes.map((size) => `${base}/${format}/${name}-${size}.${format} ${size}w`).join(", ")}"
                             ></source>`
-                        )).join("")}
+                          )).join("")}
                         <img src="${image.original}" class="rounded-xl object-cover" loading="lazy" decoding="async" />
                       </picture>
                     </div>
                   </li>`
-            }).join("")}
+              }).join("")}
           </ul>
         </main>
       </body>

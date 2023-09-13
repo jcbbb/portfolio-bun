@@ -172,11 +172,14 @@ export function render() {
                 let name = parts.pop().replace(/\.[^/.]+$/, "");
                 let base = parts.join("/");
                 return `
-                  <li>
-                  <a class="flex flex-col space-y-4 relative group" href="/projects/${project.slug}">
+                  <li class="relative flex flex-col space-y-4 group">
+                    <a class="absolute w-full h-full top-0 left-0" href="/projects/${project.slug}"></a>
                     <div class="flex flex-col title">
                       ${project.featured ? `<span class="text-sm uppercase tracking-tight text-gruvbox-purple font-medium">Featured</span>` : ''}
-                      <strong class="text-3xl font-semibold text-gruvbox-black">${project.title}</strong>
+                      <div class="flex items-center justify-between">
+                        <strong class="text-3xl font-semibold text-gruvbox-black">${project.title}</strong>
+                        <a href="${project.live_url}" class="duration-300 relative z-10 text-gruvbox-aqua hover:text-gruvbox-green underline">Live</a>
+                      </div>
                     </div>
                     <picture>
                       ${project.presentation.formats.map((format) => (
@@ -187,9 +190,8 @@ export function render() {
                       )).join("")}
                       <img src="${project.presentation.original}" class="max-w-wfull rounded-xl contain" loading="lazy" decoding="async" />
                     </picture>
-                  </a>
-                </li>`
-              }).join("")}
+                  </li>`
+                }).join("")}
             </ul>
           </div>
           <div id="contact" class="min-h-screen pt-16 md:pt-0 space-y-5 scroll-mt-24 section">

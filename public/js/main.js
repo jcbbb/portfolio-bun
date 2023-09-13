@@ -141,8 +141,8 @@ onLinkNavigate(async ({ fromPath, toPath }) => {
   let title
   if (type === "to-projects") {
     let link = getLink(toPath);
-    thumbnail = link?.querySelector("img");
-    title = link?.querySelector(".title");
+    thumbnail = link?.parentNode?.querySelector("img");
+    title = link?.parentNode?.querySelector(".title");
     if (thumbnail) thumbnail.style.viewTransitionName = "full-embed";
     if (title) title.style.viewTransitionName = "project-title";
   }
@@ -152,8 +152,8 @@ onLinkNavigate(async ({ fromPath, toPath }) => {
       document.body.innerHTML = doc.body.innerHTML;
       if (type === "from-projects") {
         let link = getLink(fromPath);
-        thumbnail = link?.querySelector("img");
-        title = link?.querySelector(".title");
+        thumbnail = link?.parentNode?.querySelector("img");
+        title = link?.parentNode?.querySelector(".title");
         if (thumbnail) thumbnail.style.viewTransitionName = "full-embed";
         if (title) title.style.viewTransitionName = "project-title";
       }

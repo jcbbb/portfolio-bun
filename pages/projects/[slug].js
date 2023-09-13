@@ -27,11 +27,11 @@ async function generate({ original, sizes, formats } = {}) {
 }
 
 export async function data() {
-  //for (let project of projects) {
-  // await generate(project.presentation)
-  //await Promise.all(project.images.map(generate));
-  //}
-
+  // TODO: uncomment to generate optimized images
+  // for (let project of projects) {
+  //   await generate(project.presentation)
+  //   await Promise.all(project.images.map(generate));
+  // }
 
   return projects.map((project) => {
     let parts = project.presentation.original.split("/");
@@ -80,7 +80,10 @@ export function render({ project, base, name }) {
             <div class="flex flex-col relative">
               <div class="flex flex-col project-title">
                 ${project.featured ? `<span class="text-sm uppercase tracking-tight font-medium text-gruvbox-purple">Featured</span>` : ''}
-                <strong class="text-3xl font-semibold text-gruvbox-black">${project.title}</strong>
+                <div class="flex items-center justify-between">
+                  <strong class="text-3xl font-semibold text-gruvbox-black">${project.title}</strong>
+                  <a href="${project.live_url}" class="duration-300 relative z-10 text-gruvbox-aqua hover:text-gruvbox-green underline">Live</a>
+                </div>
               </div>
               <p class="p-3 bg-gruvbox-fg-700 text-gruvbox-black rounded-md mt-2 max-w-sm description">
                 ${project.description}
@@ -111,16 +114,16 @@ export function render({ project, base, name }) {
                     <div class="px-6 lg:px-16">
                       <picture>
                         ${image.formats.map((format) => (
-                          `<source
+                        `<source
                             type="image/${format}"
                             srcset="${image.sizes.map((size) => `${base}/${format}/${name}-${size}.${format} ${size}w`).join(", ")}"
                             ></source>`
-                          )).join("")}
+                        )).join("")}
                         <img src="${image.original}" class="rounded-xl object-cover" loading="lazy" decoding="async" />
                       </picture>
                     </div>
                   </li>`
-              }).join("")}
+                }).join("")}
           </ul>
         </main>
       </body>

@@ -7,6 +7,7 @@ export let projects = [
       sizes: [400, 600, 800, 1000, 1200, 1600, 2000, 2400, 2800, 3200, 3600, 4000]
     },
     featured: true,
+    live_url: "https://needs.uz",
     title: "Needs",
     description: "Marketplace for people to publish listings (e.g. Ebay/Amazon). It has great performance, app-like navigation with Service Workers and Webauthn",
     images: [
@@ -86,6 +87,7 @@ export let projects = [
   },
   {
     slug: "meitao",
+    live_url: "https://meitao.uz",
     presentation: {
       original: "/public/images/meitao/thumb.jpeg",
       formats: ["avif", "webp"],
@@ -167,6 +169,7 @@ export let projects = [
     },
     featured: true,
     title: "Mohirlar",
+    live_url: "https://mohirlar.uz",
     description: "Job board to connect freelancers with clients",
     images: [
       {
@@ -212,5 +215,17 @@ export let projects = [
         sizes: [400, 600, 800, 1000, 1200, 1600, 2000, 2400, 2800, 3200]
       }
     ],
+  },
+  {
+    slug: "monkey",
+    presentation: {
+      original: "/public/images/monkey/presentation.png",
+      formats: ["webp"],
+      sizes: [400, 600, 800, 1000, 1200, 1600]
+    },
+    title: "Monkey",
+    live_url: "https://monkey.homeless.dev",
+    description: "Interpreter for my own programming language - Monkey",
+    images: [],
   }
 ]

@@ -639,6 +639,10 @@ video {
   inset-inline-end: 0.25rem;
 }
 
+.left-0 {
+  left: 0px;
+}
+
 .top-0 {
   top: 0px;
 }
@@ -683,16 +687,12 @@ video {
   clear: none;
 }
 
-.m-1 {
-  margin: 0.25rem;
-}
-
 .-m-2 {
   margin: -0.5rem;
 }
 
-.-m-2\.5 {
-  margin: -0.625rem;
+.m-1 {
+  margin: 0.25rem;
 }
 
 .mx-auto {
@@ -704,16 +704,20 @@ video {
   margin-left: -0.5rem;
 }
 
+.mt-12 {
+  margin-top: 3rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
 
-.mt-20 {
-  margin-top: 5rem;
-}
-
 .mt-3 {
   margin-top: 0.75rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
 }
 
 .mt-5 {
@@ -722,18 +726,6 @@ video {
 
 .mt-6 {
   margin-top: 1.5rem;
-}
-
-.mt-auto {
-  margin-top: auto;
-}
-
-.mt-12 {
-  margin-top: 3rem;
-}
-
-.mt-4 {
-  margin-top: 1rem;
 }
 
 .box-border {
@@ -1401,10 +1393,6 @@ video {
   gap: 0.75rem;
 }
 
-.gap-4 {
-  gap: 1rem;
-}
-
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -2018,16 +2006,12 @@ video {
      object-fit: scale-down;
 }
 
-.p-3 {
-  padding: 0.75rem;
-}
-
 .p-2 {
   padding: 0.5rem;
 }
 
-.p-2\.5 {
-  padding: 0.625rem;
+.p-3 {
+  padding: 0.75rem;
 }
 
 .px-3 {
@@ -2269,6 +2253,10 @@ video {
 
 .text-gruvbox-purple {
   color: var(--gruvbox-purple);
+}
+
+.text-gruvbox-aqua {
+  color: var(--gruvbox-aqua);
 }
 
 .underline {
@@ -2775,12 +2763,20 @@ nav a.link-active span {
   font-weight: 700;
 }
 
+.hover\:text-gruvbox-aqua-500:hover {
+  color: var(--gruvbox-aqualight);
+}
+
 .hover\:text-gruvbox-green:hover {
   color: var(--gruvbox-green);
 }
 
 .hover\:text-gruvbox-purple:hover {
   color: var(--gruvbox-purple);
+}
+
+.hover\:text-gruvbox-aqua:hover {
+  color: var(--gruvbox-aqua);
 }
 
 .before\:hover\:text-center:hover::before {

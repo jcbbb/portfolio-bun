@@ -5,13 +5,12 @@ services:
     build:
       context: ./
     restart: always
-
     labels:
       - traefik.enable=true
       - traefik.http.routers.portfolio.tls=true
-      - traefik.http.routers.portfolio.certresolver=zerossl
+      - traefik.http.routers.portfolio.tls.certresolver=zerossl
       - traefik.http.routers.portfolio.rule=Host(`portfolio.homeless.dev`)
-      - traefik.http.routers.portfolio.loadbalancer.server.port=6990
+      - traefik.http.services.portfolio.loadbalancer.server.port=6990
     networks:
       - app
 

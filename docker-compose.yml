@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  portfolio:
+    build:
+      context: ./
+    restart: always
+
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.portfolio.tls=true
+      - traefik.http.routers.portfolio.certresolver=zerossl
+      - traefik.http.routers.portfolio.rule=Host(`portfolio.homeless.dev`)
+      - traefik.http.routers.portfolio.loadbalancer.server.port=6990
+    networks:
+      - app

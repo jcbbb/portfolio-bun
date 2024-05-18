@@ -1,5 +1,7 @@
 FROM oven/bun:1 as base
 
+USER bun
+
 ARG PORT=6990
 
 ENV PORT=$PORT
@@ -12,28 +14,14 @@ LABEL traefik.http.routers.homeless-portfolio.loadbalancer.server="$PORT"
 
 WORKDIR /app
 
-FROM base as install
-RUN mkdir -p /temp/dev 
-COPY . /temp/dev
-RUN cd /temp/dev && bun install --frozen-lockfile
+COPY package.json bun.lockb ./
 
-RUN mkdir -p /temp/prod
-COPY . /temp/prod
-RUN cd /temp/prod && bun install --frozen-lockfile --production
-
-FROM base as prerelease
-COPY --from=install /temp/dev/node_modules node_modules
-COPY . .
-
-ENV NODE_ENV=production
-RUN bun test
-
-FROM base as release
-
-COPY --from=install /temp/prod/node_modules node_modules
-COPY --from=prerelease /app .
+RUN bun install --frozen-lockfile --production
 
 USER bun
+
+COPY --chown=bun:bun . .
+
 EXPOSE $PORT/tcp
 
 ENTRYPOINT ["bun", "run", "index.js"]

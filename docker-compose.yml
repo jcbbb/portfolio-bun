@@ -14,3 +14,7 @@ services:
       - traefik.http.routers.portfolio.loadbalancer.server.port=6990
     networks:
       - app
+
+networks:
+  app:
+    name: app

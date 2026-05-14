@@ -1,12 +1,61 @@
 export let projects = [
   {
+    slug: "pos",
+    presentation: {
+      original: "/public/images/pos/pos_homepage.png",
+      formats: ["webp"],
+      sizes: [400, 600, 800, 1000, 1200, 1600, 2000, 2400, 2800, 3200, 3600, 4000]
+    },
+    featured: true,
+    live_url: "https://fam.pos.kdsx.uz",
+    title: "Octopos",
+    description: "Sales management system with POS, Kitchen, and Dashboard. Written in Golang and React",
+    images: [
+      {
+        title: "POS Orders page",
+        original: "/public/images/pos/pos_orders.png",
+        formats: ["avif", "webp"],
+        sizes: [400, 600, 800, 1000, 1200, 1600, 2000, 2400, 2800, 3200]
+      },
+      {
+        title: "Kitchen Tickets",
+        original: "/public/images/pos/kitchen_home.png",
+        formats: ["avif", "webp"],
+        sizes: [400, 600, 800, 1000, 1200, 1600, 2000, 2400, 2800, 3200]
+      },
+      {
+        title: "Dashboard Items",
+        original: "/public/images/pos/dash_items.png",
+        formats: ["avif", "webp"],
+        sizes: [400, 600, 800, 1000, 1200, 1600, 2000, 2400, 2800, 3200]
+      },
+      {
+        title: "Dashboard Item",
+        original: "/public/images/pos/dash_single_item.png",
+        formats: ["avif", "webp"],
+        sizes: [400, 600, 800, 1000, 1200, 1600, 2000, 2400, 2800, 3200]
+      },
+      {
+        title: "Dashboard Inventory",
+        original: "/public/images/pos/dash_inventory.png",
+        formats: ["avif", "webp"],
+        sizes: [400, 600, 800, 1000, 1200, 1600, 2000, 2400, 2800, 3200]
+      },
+      {
+        title: "Dashboard Report Summary",
+        original: "/public/images/pos/dash_report_summary.png",
+        formats: ["avif", "webp"],
+        sizes: [400, 600, 800, 1000, 1200, 1600, 2000, 2400, 2800, 3200]
+      },
+    ],
+  },
+  {
     slug: "needs",
     presentation: {
       original: "/public/images/needs/presentation.png",
       formats: ["webp"],
       sizes: [400, 600, 800, 1000, 1200, 1600, 2000, 2400, 2800, 3200, 3600, 4000]
     },
-    featured: true,
     live_url: "https://needs.uz",
     title: "Needs",
     description: "Marketplace for people to publish listings (e.g. Ebay/Amazon). It has great performance, app-like navigation with Service Workers and Webauthn",

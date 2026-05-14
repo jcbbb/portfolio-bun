@@ -28,10 +28,10 @@ async function generate({ original, sizes, formats } = {}) {
 
 export async function data() {
   // TODO: uncomment to generate optimized images
-  // for (let project of projects) {
-  //   await generate(project.presentation)
-  //   await Promise.all(project.images.map(generate));
-  // }
+  for (let project of projects) {
+    await generate(project.presentation)
+    await Promise.all(project.images.map(generate));
+  }
 
   return projects.map((project) => {
     let parts = project.presentation.original.split("/");
@@ -93,11 +93,11 @@ export function render({ project, base, name }) {
           <div class="px-6 pt-6 md:pt-16 lg:px-16">
             <picture>
               ${project.presentation.formats.map((format) => (
-                `<source
+    `<source
                   type="image/${format}"
                   srcset="${project.presentation.sizes.map((size) => `${base}/${format}/${name}-${size}.${format} ${size}w`).join(", ")}"
                   ></source>`
-              )).join("")}
+  )).join("")}
               <img src="${project.presentation.original}" class="w-full rounded-xl object-cover full-embed" loading="lazy" decoding="async" />
             </picture>
           </div>
@@ -105,25 +105,25 @@ export function render({ project, base, name }) {
         <main class="mt-6 pb-24">
           <ul class="space-y-6">
             ${project.images.map((image) => {
-              let parts = image.original.split("/");
-              let name = parts.pop().replace(/\.[^/.]+$/, "");
-              let base = parts.join("/");
-              return `
+    let parts = image.original.split("/");
+    let name = parts.pop().replace(/\.[^/.]+$/, "");
+    let base = parts.join("/");
+    return `
                   <li class="flex flex-col md:flex-row">
                     <div class="sticky top-0 h-full py-2 px-6 lg:pl-16 md:max-w-md w-full flex-shrink-0 bg-gruvbox-fg text-gruvbox-black text-lg tracking-tight">${image.title}</div>
                     <div class="px-6 lg:px-16">
                       <picture>
                         ${image.formats.map((format) => (
-                        `<source
+      `<source
                             type="image/${format}"
                             srcset="${image.sizes.map((size) => `${base}/${format}/${name}-${size}.${format} ${size}w`).join(", ")}"
                             ></source>`
-                        )).join("")}
+    )).join("")}
                         <img src="${image.original}" class="rounded-xl object-cover" loading="lazy" decoding="async" />
                       </picture>
                     </div>
                   </li>`
-                }).join("")}
+  }).join("")}
           </ul>
         </main>
       </body>

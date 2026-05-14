@@ -114,9 +114,45 @@ export function render() {
               </p>
             </div>
           </div>
-          <div id="experience" class="min-h-screen pt-16 md:pt-0 scroll-mt-24 space-y-5 section">
+          <div id="experience" class="min-h-screen pt-16 md:pt-0 scroll-mt-24 space-y-10 section">
             <div class="sticky top-0 py-3 px-6 lg:pl-16 md:hidden w-full flex-shrink-0 bg-gruvbox-fg text-gruvbox-black text-sm tracking-tight uppercase font-medium">
               Experience
+            </div>
+            <div class="px-6 md:px-0 space-y-5">
+              <div class="flex flex-col space-y-1">
+                <strong class="text-lg font-medium">Senior Fullstack Engineer @ <a class="underline" href="https://iota.uz">iota.uz</a></strong>
+                <span class="text-sm">August 2023 - Present</span>
+              </div>
+              <ul class="space-y-3">
+                <li class="flex gap-2 items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 -ml-2 flex-shrink-0 rounded-full text-gruvbox-purple stroke-2">
+                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                  </svg>
+                  <p>Built insurance ERP system covering insurance, reinsurance, claims, and product management modules</p>
+                </li>
+                <li class="flex gap-2 items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 -ml-2 flex-shrink-0 rounded-full text-gruvbox-purple stroke-2">
+                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                  </svg>
+                  <p>Developed dynamic insurance product configurators enabling flexible policy customization</p>
+                </li>
+                 <li class="flex gap-2 items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 -ml-2 flex-shrink-0 rounded-full text-gruvbox-purple stroke-2">
+                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                  </svg>
+                  <p>Developed <a href="https://eai.uz" class="underline">eai.uz</a> and <a href="https://erp.eai.uz" class="underline">erp.eai.uz</a></p>
+                </li>
+              </ul>
+              <ul class="flex gap-3 flex-wrap">
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">Golang</li>
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">HTMX</li>
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">Alpine.js</li>
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">JavaScript</li>
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">React</li>
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">Vue</li>
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">Node.js</li>
+                <li class="py-2 px-3 bg-gruvbox-aqua-500 rounded-full text-xs">PostgreSQL</li>
+              </ul>
             </div>
             <div class="px-6 md:px-0 space-y-5">
               <div class="flex flex-col space-y-1">
@@ -168,10 +204,10 @@ export function render() {
             </div>
             <ul class="flex flex-col space-y-12 px-6 md:px-0">
               ${projects.map((project) => {
-                let parts = project.presentation.original.split("/");
-                let name = parts.pop().replace(/\.[^/.]+$/, "");
-                let base = parts.join("/");
-                return `
+    let parts = project.presentation.original.split("/");
+    let name = parts.pop().replace(/\.[^/.]+$/, "");
+    let base = parts.join("/");
+    return `
                   <li class="relative flex flex-col space-y-4 group">
                     <a class="absolute w-full h-full top-0 left-0" href="/projects/${project.slug}"></a>
                     <div class="flex flex-col title">
@@ -183,15 +219,15 @@ export function render() {
                     </div>
                     <picture>
                       ${project.presentation.formats.map((format) => (
-                        `<source
+      `<source
                           type="image/${format}"
                           srcset="${project.presentation.sizes.map((size) => `${base}/${format}/${name}-${size}.${format} ${size}w`).join(", ")}"
                           ></source>`
-                      )).join("")}
+    )).join("")}
                       <img src="${project.presentation.original}" class="max-w-wfull rounded-xl contain" loading="lazy" decoding="async" />
                     </picture>
                   </li>`
-                }).join("")}
+  }).join("")}
             </ul>
           </div>
           <div id="contact" class="min-h-screen pt-16 md:pt-0 space-y-5 scroll-mt-24 section">

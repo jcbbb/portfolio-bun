@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "bun --watch ./index.js",
-    "run": "bun run ./index.js"
+    "run": "bun run ./index.js",
+    "tailwind": "tailwindcss -w -i ./public/css/main.css -o ./public/css/main.min.css"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

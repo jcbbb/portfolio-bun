@@ -1441,6 +1441,12 @@ video {
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
 
+.space-y-10 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
+}
+
 .space-y-reverse > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 1;
 }
@@ -2243,6 +2249,10 @@ video {
   color: rgb(59 130 246 / var(--tw-text-opacity));
 }
 
+.text-gruvbox-aqua {
+  color: var(--gruvbox-aqua);
+}
+
 .text-gruvbox-black {
   color: var(--gruvbox-black);
 }
@@ -2253,10 +2263,6 @@ video {
 
 .text-gruvbox-purple {
   color: var(--gruvbox-purple);
-}
-
-.text-gruvbox-aqua {
-  color: var(--gruvbox-aqua);
 }
 
 .underline {
@@ -2763,20 +2769,12 @@ nav a.link-active span {
   font-weight: 700;
 }
 
-.hover\:text-gruvbox-aqua-500:hover {
-  color: var(--gruvbox-aqualight);
-}
-
 .hover\:text-gruvbox-green:hover {
   color: var(--gruvbox-green);
 }
 
 .hover\:text-gruvbox-purple:hover {
   color: var(--gruvbox-purple);
-}
-
-.hover\:text-gruvbox-aqua:hover {
-  color: var(--gruvbox-aqua);
 }
 
 .before\:hover\:text-center:hover::before {

@@ -28,10 +28,10 @@ async function generate({ original, sizes, formats } = {}) {
 
 export async function data() {
   // TODO: uncomment to generate optimized images
-  for (let project of projects) {
-    await generate(project.presentation)
-    await Promise.all(project.images.map(generate));
-  }
+  // for (let project of projects) {
+  //   await generate(project.presentation)
+  //   await Promise.all(project.images.map(generate));
+  // }
 
   return projects.map((project) => {
     let parts = project.presentation.original.split("/");
